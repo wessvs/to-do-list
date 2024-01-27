@@ -7,8 +7,17 @@ let checkIco = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" f
 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
 </svg>`
 
+
+// para enviar quando apertar enter
+document.addEventListener('keypress', function(e){
+    
+    if(e.key === "Enter") {
+        newTask()
+    }
+})
+
 function clearField(field) {
-    field.style.border = "none"
+    field.style.borderColor = "black"
     field.value = ""
 }
 
@@ -29,12 +38,12 @@ function newTask()
     // validação
     if(!input.value)
     {
-        input.style.border = "3px solid var(--color-red2)"
-        alert(`Empty field. Please, type to add new task.`)
+        // input.style.border = "1px solid var(--color-red2)"
+        // alert(`Empty field. Please, type to add new task.`)
     }
     else if(validateIfExistsNewTask()) 
     {
-        input.style.border = "3px solid var(--color-red2)"
+        input.style.border = "1px solid var(--color-red2)"
         alert("Já existe uma task com essa descrição!")
     }
     else
@@ -59,7 +68,7 @@ function showValues()
     list.innerHTML = ""
     for(let i=0; i < values.length; i++)
     {
-        list.innerHTML +=`<li>${values[i]['name']}<button id="btn-ok" onclick="removeItem('${values[i]['name']}')">${notCheckIco}</button></li>`
+        list.innerHTML +=`<li onclick="removeItem('${values[i]['name']}')">${values[i]['name']}<button id="btn-ok" >${notCheckIco}</button></li>`
     }
 }
 

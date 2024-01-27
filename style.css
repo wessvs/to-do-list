@@ -9,6 +9,10 @@
     --color-white: white;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body{
     background-color: var(--color-dark);
     font-family: 'Lato';
@@ -35,15 +39,23 @@ body{
 #input-new-task,
 #btn-new-task {
     border:none;
-    font-size: 1rem; /*=16px medida mt usada*/
+    font-size: 1.4rem; /*=16px medida mt usada*/
     outline: none;
     padding: 1rem;
 }
 
-#input-new-task {
+#input-new-task
+ {
     border-radius: 1rem;
     width: 30vw;
-    font-size: 1.4em;
+    font-size: 1.4rem;
+}
+
+#input-new-task:focus,
+#btn-new-task:active {
+    padding: none;
+    border: 1px solid yellow;
+
 }
 
 #btn-new-task {
@@ -54,6 +66,11 @@ body{
     height:50px;
     cursor: pointer;
     transition: .4s;
+
+    /* alinhando o icone do botao */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #btn-new-task:hover {
@@ -74,7 +91,19 @@ body{
     text-transform: capitalize;
     display: flex;
     justify-content: space-between;
+    padding: 5px;
+    transition: .4s ease-in-out;
+    border-radius: 1em;
 }
+
+#to-do-list li:hover,
+#btn-ok:hover {
+    transition: .4s;
+    padding-left: 1rem;
+    background-color: var(--color-dark3);
+    
+}
+
 
 #btn-ok {
     background-color: var(--color-dark);
